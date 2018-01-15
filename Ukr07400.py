@@ -45,24 +45,26 @@ def create_calendar_page(month, year, day=1):
         else:
             days_char.append(str(i))
 
-    days_str = ' '.join(days_char)
+    week_01 = ' '.join(days_char[:7])
+    week_02 = ' '.join(days_char[7:14])
+    week_03 = ' '.join(days_char[14:21])
+    week_04 = ' '.join(days_char[21:28])
+    week_05 = ' '.join(days_char[28:35])
+    week_06 = ' '.join(days_char[35:])
 
-    week_01 = days_char[:7]
-    week_02 = days_char[7:14]
-    week_03 = days_char[14:21]
-    week_04 = days_char[21:28]
-    week_05 = days_char[28:35]
-    week_06 = days_char[35:]
+    if days_char[35] != '00':
+        weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(
+            week_05) + "\n" + str(week_06))
+    else:
+        weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(
+            week_05))
 
-    weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(week_05) + "\n" + str(week_06))
 
-    print weeks
-
-    row = (20 * "-" + "\nMO TU WE TH FR SA SU\n" + 20 * "-" + "\n")
+    row = (20 * "-" + "\nMO TU WE TH FR SA SU\n" + 20 * "-" + "\n" + weeks)
 
     print row
 
     return today_str
 
 
-print create_calendar_page(6, 2018)
+print create_calendar_page(2, 2018)
