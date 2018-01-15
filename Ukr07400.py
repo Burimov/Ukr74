@@ -18,13 +18,13 @@ def create_calendar_page(month, year, day=1):
     row_03 = '-' * 20
     days = []
 
-    for i in range(36):
+    for i in range(42):
         days.append(0)
 
     days[today_weekday] = today_num.day
 
     for i in range(today_weekday, len(days)):
-        if days[i] == 0 and i < 36:
+        if days[i] == 0 and i < 42:
             days[i] = days[i - 1] + 1
 
     for i in range(len(deltas)):
@@ -45,17 +45,22 @@ def create_calendar_page(month, year, day=1):
         else:
             days_char.append(str(i))
 
+    days_str = ' '.join(days_char)
 
-    print last_day_of_the_month.day
-    print row_01
-    print row_02
-    print row_03
-    print days
+    week_01 = days_char[:7]
+    week_02 = days_char[7:14]
+    week_03 = days_char[14:21]
+    week_04 = days_char[21:28]
+    week_05 = days_char[28:35]
+    week_06 = days_char[35:]
 
-    print days_char
+    weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(week_05) + "\n" + str(week_06))
 
-    print day_name_01
-    print today_weekday
+    print weeks
+
+    row = (20 * "-" + "\nMO TU WE TH FR SA SU\n" + 20 * "-" + "\n")
+
+    print row
 
     return today_str
 
