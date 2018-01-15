@@ -45,6 +45,10 @@ def create_calendar_page(month, year, day=1):
         else:
             days_char.append(str(i))
 
+    for i in range(len(days_char)):
+        if days_char[i] == '00':
+            days_char[i] = '  '
+
     week_01 = ' '.join(days_char[:7])
     week_02 = ' '.join(days_char[7:14])
     week_03 = ' '.join(days_char[14:21])
@@ -52,19 +56,20 @@ def create_calendar_page(month, year, day=1):
     week_05 = ' '.join(days_char[28:35])
     week_06 = ' '.join(days_char[35:])
 
-    if days_char[35] != '00':
+    # for i in range(len(days_char)):
+    #     if days_char[i] == '00':
+    #         days_char[i] = '  '
+
+    if days_char[35] != '  ':
         weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(
             week_05) + "\n" + str(week_06))
     else:
         weeks = (str(week_01) + "\n" + str(week_02) + "\n" + str(week_03) + "\n" + str(week_04) + "\n" + str(
             week_05))
 
-
     row = (20 * "-" + "\nMO TU WE TH FR SA SU\n" + 20 * "-" + "\n" + weeks)
 
-    print row
-
-    return today_str
+    return row
 
 
-print create_calendar_page(2, 2018)
+print create_calendar_page(7, 2018)
