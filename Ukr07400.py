@@ -6,6 +6,14 @@ def create_calendar_page(month, year, day=1):
     today_num = datetime.date(year, month, day)
     today_str = today_num.strftime("%A, %B, %d, %Y")
     day_name_01 = today_num.strftime("%A")
+    dt_28 = datetime.timedelta(28)
+    dt_29 = datetime.timedelta(29)
+    dt_30 = datetime.timedelta(30)
+
+
+    print today_num + dt_28
+    print today_num + dt_29
+    print today_num + dt_30
 
     row_01 = '-' * 20
     row_02 = "MO TU WE TH FR SA SU"
@@ -98,4 +106,4 @@ def create_calendar_page(month, year, day=1):
     return today_str
 
 
-print create_calendar_page(2, 2018)
+print create_calendar_page(1, 2018)
