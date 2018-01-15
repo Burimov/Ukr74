@@ -10,11 +10,7 @@ def create_calendar_page(month, year, day=1):
     dt_28 = datetime.timedelta(28)
     dt_29 = datetime.timedelta(29)
     dt_30 = datetime.timedelta(30)
-
-
-    print today_num + dt_28
-    print today_num + dt_29
-    print today_num + dt_30
+    deltas = [dt_28, dt_29, dt_30]
 
     row_01 = '-' * 20
     row_02 = "MO TU WE TH FR SA SU"
@@ -30,16 +26,21 @@ def create_calendar_page(month, year, day=1):
         if days[i] == 0 and i < 36:
             days[i] = days[i - 1] + 1
 
-    print days
+    for i in range(len(deltas)):
+        is_day_next_month = today_num + deltas[i]
+        last_day_of_the_month = today_num - datetime.timedelta(1)
+        if is_day_next_month.day == 1:
+            print last_day_of_the_month.day
+
 
     print row_01
     print row_02
     print row_03
+    print days
     print day_name_01
     print today_weekday
-
 
     return today_str
 
 
-print create_calendar_page(1, 2018)
+print create_calendar_page(2, 2018)
